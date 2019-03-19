@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <audio src="./aa.mp3" controls="controls">
+    <audio src="./aa.mp3" controls="controls" id='mp'>
     </audio>
+	<button id="btn">点击播放</button>
 </body>
+<script>
+document.getElementById('btn').onclick = function (ev) {
+    document.getElementById('mp').play()
+}
+</script>
