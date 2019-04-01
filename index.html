@@ -2,103 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="js/sky.js"></script>
-    <script src="js/land.js"></script>
-    <script src="js/bird.js"></script>
-    <script src="js/pipe.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
-  
-<canvas id="cvs" width="800" height="600" style="border: 1px solid red"></canvas>
 <body>
-<script>
-    (function(w){
-        var total= 0,callback,key,images;
-         images={
-            "bird":"imgs/birds.png",
-            "land":"imgs/land.png",
-            "pipeDown":"imgs/pipeDown.png",
-            "pipeUp":"imgs/pipeUp.png",
-            "sky":"imgs/sky.png"
-        };
-        var imgs={};
-        for( key in images){
-            var img=new Image();
-            img.src=images[key];
-            img.addEventListener("load",function(){
-                fn();
-            });
-            imgs[key]=img;
-        };
-        function fn(){
-            total++;
-            if(total>=5){
-                callback(imgs);
-            };
-        };
-        w.getimg=function(fn){
-            callback=fn;
-        };
-    }(window));
-    (function(){
-        var can=document.getElementById("cvs");
-        var cvs=can.getContext('2d');
-        getimg(function(v){
-            Sky.init(can,cvs,v);
-            var sky=new Sky(0,0);
-            var sky2=new Sky(can.width,0);
-            Land.init(v,can,cvs);
-            var land=new Land(0,488);
-            var land2=new Land(1008,488);
-            Bird.init(v,can,cvs);
-            var bird=new Bird(100,100);
-            Pipe.init(v,can,cvs);
-            var pipe=new Pipe(200);
-            var pipe2=new Pipe(356);
-            var pipe3=new Pipe(512);
-            var pipe4=new Pipe(668);
-            var pipe5=new Pipe(824);
-            var pipe6=new Pipe(980);
-            var time=setInterval(function(){
-                var birdCoreY=bird.y+bird.h/2;
-                var birdCoreX=bird.x+bird.w/2;
-                if(birdCoreY<=0||birdCoreY>=can.height-112||cvs.isPointInPath(birdCoreX,birdCoreY)){
-                    clearInterval(time);
-                };
-                cvs.beginPath();
-                cvs.clearRect(0,0,can.width,can.height);
-                sky.draw();
-                sky.updata();
-                sky2.draw();
-                sky2.updata();
-                pipe.draw();
-                pipe.update()
-                pipe2.draw();
-                pipe2.update()
-                pipe3.draw();
-                pipe3.update()
-                pipe4.draw();
-                pipe4.update()
-                pipe5.draw();
-                pipe5.update()
-                pipe6.draw();
-                pipe6.update()
-                land.draw();
-                land.updata();
-                land2.draw();
-                land2.updata();
-                bird.draw();
-                bird.updata();
-                bird.bind();
-                cvs.textAlign="right";
-                cvs.textBaseline="top";
-                cvs.font="900 40px '微软雅黑'";
-                cvs.fillStyle="red";
-                cvs.fillText("得分 : "+Pipe.number+" ",780,0);
-            },1000/60);
-        });
-    }());
-
-</script>
+    <audio src="./aa.mp3" controls="controls" id='mp'>
+    </audio>
+	<button id="btn">点击播放3</button>
+<p>https://1042433064.github.io/bird/</p>
 </body>
-</html>
+<script>
+document.getElementById('btn').onclick = function (ev) {
+    document.getElementById('mp').play()
+}
+document.addEventListener('click', musicPlay);
+setTimeout(function () {
+    document.body.click()
+}, 500)
+function musicPlay() {
+    document.getElementById('mp').play();
+    document.removeEventListener('click', musicPlay);
+}
+</script>
