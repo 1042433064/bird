@@ -18,7 +18,10 @@ document.getElementById('btn').onclick = function (ev) {
 }
 document.addEventListener('click', musicPlay);
 setTimeout(function () {
-    document.getElementById('btn').click()
+    var btn = document.getElementById('btn')
+    var event = document.createEvent('Events');
+    event.initEvent('touchend', true, true);
+    btn.dispatchEvent(event);
     document.getElementById('btn').className = "red"
 }, 5000)
 function musicPlay() {
