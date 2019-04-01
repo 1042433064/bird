@@ -9,7 +9,7 @@
 <body>
     <audio src="./aa.mp3" controls="controls" id='mp'>
     </audio>
-	<button id="btn">点击播放2</button>
+	<button id="btn">点击播放1</button>
 <p>https://1042433064.github.io/bird/</p>
 </body>
 <script>
@@ -18,7 +18,7 @@ document.getElementById('btn').onclick = function (ev) {
 }
 document.addEventListener('click', musicPlay);
 setTimeout(function () {
-    document.body.click()
+    document.getElementById('btn').click()
 }, 1000)
 function musicPlay() {
     document.getElementById('mp').play();
